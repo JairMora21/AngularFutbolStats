@@ -1,0 +1,26 @@
+.icono-equipo{
+  width: 100px;
+  height: auto;
+}
+
+.team-detail-stats {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  max-width: 50px;
+  line-height: 12px;
+}
+
+.team-name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mr-t{
+  border-radius: 10px; /* Puedes ajustar el valor según la cantidad de redondez que desees */
+  border: 1px solid #ddd;
+}
+.mr-t > div{
+  margin-top: 25px;
+}
+

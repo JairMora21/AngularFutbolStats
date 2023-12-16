@@ -1,0 +1,29 @@
+.navbar-radius {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(50, 50, 50, 0.8); /* Valores más bajos para un negro menos intenso, y el último valor (0.8) es la opacidad */
+  margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+  .navbar-radius {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+
+.text-nav {
+  font-family: Neusa Next Pro;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  letter-spacing: -.008em;
+  color: hsla(0,0%,100%,.8);
+  padding: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
