@@ -1,0 +1,20 @@
+
+<div class="card cardcolor row card-size">
+  <div class="d-flex justify-content-between p-3">
+    <div class="col-6 stats-name">Goleadores</div>
+    <div class="col-2 text-end"></div>
+    <div class="col-1"></div>
+    <div class="col-1 text-end"><i class="fa-solid fa-futbol"></i></div>
+  </div>
+  <div
+    class="card-body text-center d-flex"
+    *ngFor="let index of [1, 2, 3, 4, 5]"
+  >
+    <div class="col-1">{{ index }}</div>
+    <div class="col-2">
+      <i class="fa-solid fa-circle-user mt-1"></i>
+    </div>
+    <div class="col-8 text-start">Jair Mora</div>
+    <div class="col-1 text-end">4</div>
+  </div>
+</div>

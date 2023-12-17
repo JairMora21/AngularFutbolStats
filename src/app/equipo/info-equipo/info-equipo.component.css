@@ -1,0 +1,10 @@
+.team-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .team-name {
+    font-size: 17px;
+  }
+}

@@ -6,8 +6,7 @@ import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 
 const routes: Routes = [
   {path: 'equipo/:id', component: EquipoComponent},
-  {path: 'partidos/:id', component: PartidoComponent},
-  {path: 'estadisticas/:id', component: EstadisticasComponent}
+  {path: 'partidos/:id', component: PartidoComponent}
 ];
 
 @NgModule({
