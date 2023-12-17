@@ -1,6 +1,7 @@
 .icono-equipo{
-  width: 100px;
-  height: auto;
+  width: 110px;
+  height: 110px;
+  margin-top: 15px;
 }
 
 .team-detail-stats {
@@ -13,8 +14,15 @@
 
 .team-name {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
 }
+
+.card-size{
+  width: 18rem
+}
+.stats-name{
+  font-size: 16px;
+  font-weight: 600;}
 
 .mr-t{
   border-radius: 10px; /* Puedes ajustar el valor según la cantidad de redondez que desees */
@@ -22,5 +30,45 @@
 }
 .mr-t > div{
   margin-top: 25px;
+}
+
+.ml-3{
+  margin-left: 40px;
+}
+
+
+@media (max-width: 767px) {
+  .icono-equipo{
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+  }
+
+  .team-detail-stats {
+    font-size: 10px;
+    max-width: 30px;
+    line-height: 8px;
+  }
+
+  .team-name {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .ml-3
+  {
+    margin-left: 0px;
+  }
+
+  .card-size{
+    width: 14rem
+  }
+  .stats-name{
+    font-size: 12px;
+}
+}
+
+.cardcolor {
+  background-color: #fefefe;
 }
 

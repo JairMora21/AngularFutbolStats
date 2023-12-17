@@ -1,71 +1,137 @@
 <div class="bg-white">
-
-    <div class="row p-4">
-      <h2>Equipo</h2>
-      <hr>
-      <div class="col-1 justify-content-center mt-3">
-        <p class="team-name"><strong>Temporada</strong></p>
-        <select>
-          <option value="opcion1">2023/2024</option>
-          <option value="opcion2">2022/2023</option>
-          <option value="opcion3">2021/2022</option>
-        </select>
+  <div class="row p-4">
+    <h2>Perfil de Equipo</h2>
+    <br />
+    <br />
+    <div class="col-md-1 col-12 justify-content-center mt-3">
+      <p class="team-name">Temporada</p>
+      <select class="form-control">
+        <option value="opcion1">2023/2024</option>
+      </select>
+    </div>
+    <div class="col-md-1 col-2 d-flex justify-content-end ml-3">
+      <img src="assets/real.png" alt="real madrid" class="icono-equipo" />
+    </div>
+    <div class="col-md-2 col-9 mt-3">
+      <p class="team-name">Real Madrid</p>
+      <p class="">Madrid, España</p>
+    </div>
+    <div class="col-md-7 mt-4 d-flex mr-t">
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">PJ</p>
+        <p>15</p>
       </div>
-      <div class="col-1 d-flex justify-content-end">
-        <img src="assets/real.png" alt="real madrid" class="icono-equipo" />
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">PG</p>
+        <p>15</p>
       </div>
-      <div class="col-2 mt-3">
-        <p class="team-name"><strong>Real Madrid</strong></p>
-        <p class="">Madrid, España</p>
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">PE</p>
+        <p>15</p>
       </div>
-      <div class="col-8 mt-4 d-flex mr-t">
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">PJ</p>
-          <p>15</p>
-        </div>
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">PG</p>
-          <p>15</p>
-        </div>
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">PE</p>
-          <p>15</p>
-        </div>
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">GF</p>
-          <p>15</p>
-        </div>
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">GC</p>
-          <p>15</p>
-        </div>
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">DG</p>
-          <p>15</p>
-        </div>
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">Amarillas</p>
-          <p>15</p>
-        </div>
-        <div class="flex-grow-1 px-3">
-          <p class="team-detail-stats">Rojas</p>
-          <p>15</p>
-        </div>
-
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">GF</p>
+        <p>15</p>
+      </div>
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">GC</p>
+        <p>15</p>
+      </div>
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">DG</p>
+        <p>15</p>
+      </div>
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">TA</p>
+        <p>15</p>
+      </div>
+      <div class="flex-grow-1 px-3">
+        <p class="team-detail-stats">TR</p>
+        <p>15</p>
       </div>
     </div>
-    <div class="row p-4 ">
-      <h2>Jugadores</h2>
-      <hr>
-      <div class="col-4 ">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+      <div class="d-flex justify-content-center">
+        <div class="col-5 col-md-3">
+           <div class="card cardcolor row card-size" >
+              <div class="d-flex justify-content-between p-3">
+                 <div class="col-6 stats-name">Goleadores</div>
+                 <div class="col-2 text-end"></div>
+                 <div class="col-1"></div>
+                 <div class="col-1 text-end"><i class="fa-solid fa-futbol"></i></div>
+              </div>
+              <div class="card-body text-center d-flex" *ngFor="let index of [1, 2, 3, 4, 5]">
+                 <div class="col-1">{{ index }}</div>
+                 <div class="col-2 "><i class="fa-solid fa-circle-user mt-1"></i></div>
+                 <div class="col-8 text-start ">Jair Mora</div>
+                 <div class="col-1 text-end">4</div>
+               </div>
+              </div>
+           </div>
+
+           <div class="col-5 col-md-3 ">
+            <div class="card cardcolor row card-size">
+               <div class="d-flex justify-content-between p-3">
+                  <div class="col-6 stats-name">Partidos Jugados</div>
+                  <div class="col-2 text-end"></div>
+                  <div class="col-1"></div>
+                  <div class="col-1 text-end"><i class="fa-solid fa-circle-check text-success "></i></div>
+               </div>
+               <div class="card-body text-center d-flex" *ngFor="let index of [1, 2, 3, 4, 5]">
+                  <div class="col-1">{{ index }}</div>
+                  <div class="col-2 "><i class="fa-solid fa-circle-user mt-1"></i></div>
+                  <div class="col-8 text-start ">Jair Mora</div>
+                  <div class="col-1 text-end">4</div>
+                </div>
+               </div>
+            </div>
+
+         <div class="col-5 col-md-3">
+           <div class="card cardcolor row card-size">
+              <div class="d-flex justify-content-between p-3">
+                 <div class="col-6 stats-name">Tarjetas</div>
+                 <div class="col-2 text-end"></div>
+                 <div class="col-1"></div>
+                 <div class="col-1 text-end"><i class="fa-duotone fa-sd-card text-warning"></i></div>
+                 <div class="col-1 text-end"><i class="fa-duotone fa-sd-card text-danger "></i></div>
+                 <div class="col-1 text-end">#</div>
+              </div>
+              <div class="card-body text-center d-flex" *ngFor="let index of [1, 2, 3, 4, 5]">
+                 <div class="col-1">{{ index }}</div>
+                 <div class="col-2 "><i class="fa-solid fa-circle-user mt-1"></i></div>
+                 <div class="col-6 text-start ">Jair Mora</div>
+                 <div class="col-1 text-end">3</div>
+                 <div class="col-1 text-end">1</div>
+                 <div class="col-1 text-end">4</div>
+               </div>
+              </div>
+           </div>
+       </div>
+
+  </div>
+  <div class="row p-4">
+    <h2>Jugadores</h2>
+    <hr />
+    <div class="row">
+      <div class="row justify-content-center">
+        <div
+          class="col-5 col-md-3 mx-2 mb-3"
+          *ngFor="let index of [0, 1, 2, 3, 4, 5]"
+        >
+          <div class="card cardcolor" style="width: 18rem">
+            <i
+              class="mt-2 card-img-top fa-solid fa-circle-user fa-5x d-flex justify-content-center align-items-center"
+            ></i>
+            <div class="card-body text-center">
+              <h5 class="card-title">Jair Mora</h5>
+              <p class="card-text">Defensa #15</p>
+              <button class="btn btn-dark">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
