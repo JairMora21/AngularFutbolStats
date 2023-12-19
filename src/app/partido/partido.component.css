@@ -1,0 +1,18 @@
+
+.seas-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form-control {
+  font-size: 14px; /* Ajusta el tamaño de la fuente según sea necesario */
+  padding: 5px;   /* Ajusta el espacio interno alrededor del texto */
+  width: auto;
+}
+
+@media (max-width: 767px) {
+  .seas-title {
+    font-size: 17px;
+  }
+
+}

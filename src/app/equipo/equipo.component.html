@@ -3,36 +3,49 @@
     <h2>Perfil de Equipo</h2>
     <br />
     <br />
+
+    <!--Temporada del equipo-->
     <div class="col-md-1 col-12 justify-content-center mt-3">
       <app-temporada />
     </div>
+
+    <!--Logo del equipo-->
     <div class="col-md-1 col-2 d-flex justify-content-end ml-3">
       <img src="assets/real.png" alt="real madrid" class="icono-equipo" />
     </div>
+
+    <!-- Informacion del equipo -->
     <div class="col-md-2 col-9 mt-3">
       <app-info-equipo />
     </div>
+
+    <!-- Estadistricas del equipo-->
     <div class="col-md-7 border-stats">
       <app-stats />
     </div>
+
+    <!-- Tabla de TOP goleadores -->
     <div class="row d-flex justify-content-center mt-4">
       <div class="col-5 col-md-3 mx-2">
         <app-top-goles />
       </div>
 
+    <!-- Tabla de TOP Partidos Jugados -->
       <div class="col-5 col-md-3 mx-2">
         <app-top-pj />
       </div>
-
+    <!-- Tabla de TOP Tarjetas -->
       <div class="col-5 col-md-3 mx-2 mt-small">
         <app-top-tarjetas />
       </div>
+
       <div class="col-5 mx-2"></div>
     </div>
   </div>
   <div class="row p-4 ">
     <h2>Jugadores</h2>
     <div class="row mt-4  ">
+      <!--Cards de jugadores -->
       <div class="row justify-content-center">
         <div class="col-5 col-md-3 mx-2 mb-3" *ngFor="let index of [0, 1, 2, 3, 4, 5]">
           <app-jugador/>
