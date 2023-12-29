@@ -13,6 +13,7 @@ import { TopGolesComponent } from './equipo/top-goles/top-goles.component';
 import { TopPJComponent } from './equipo/top-pj/top-pj.component';
 import { TopTarjetasComponent } from './equipo/top-tarjetas/top-tarjetas.component';
 import { JugadorComponent } from './equipo/jugador/jugador.component';
+import { ResultadoComponent } from './partido/resultado/resultado.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { JugadorComponent } from './equipo/jugador/jugador.component';
     TopGolesComponent,
     TopPJComponent,
     TopTarjetasComponent,
-    JugadorComponent
+    JugadorComponent,
+    ResultadoComponent
   ],
   imports: [
     BrowserModule,

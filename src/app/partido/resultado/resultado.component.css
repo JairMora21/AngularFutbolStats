@@ -1,0 +1,48 @@
+
+.team-name{
+  font-family: Neusa Next Pro;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -.016em;
+  color: #212329;
+}
+.goles{
+  height: 32px;
+    font-family: Neusa Next Pro;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: -.4px;
+    padding: 0 0.2rem;
+}
+.linea-resultado{
+  padding: 0 3px;
+}
+.fans-score-numbers {
+  top: 2px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.icono-equipo {
+  width:  30px;
+  height: 30px;
+}
+
+.hover-result {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-result:hover {
+  background-color: #dce0e2; /* Nuevo color rosa */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+
