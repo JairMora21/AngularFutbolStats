@@ -1,50 +1,58 @@
-<div class="bg-white">
-  <div class="row p-4">
-    <h2>Perfil de Equipo</h2>
+<div class="bg-white p-4">
+  <h2 class="main-title">Perfil de Equipo</h2>
+  <div class="row">
     <br />
     <br />
 
     <!--Temporada del equipo-->
-    <div class="col-xl-1 col-2  mt-3">
+    <div class="col-xl-1 col-4 mt-3">
       <app-temporada />
     </div>
 
     <!-- Informacion del equipo -->
-    <div class="col-xl-3 col-4 mt-3  ">
+    <div class="col-xl-3 col-8 mt-3 mb-2">
       <app-info-equipo />
     </div>
 
     <!-- Estadistricas del equipo-->
-    <div class="col-xl-8 border-stats">
+    <div class="col-xl-8 col-12 border-stats">
       <app-stats />
     </div>
 
-    <!-- Tabla de TOP goleadores -->
+    <!-- Estadisticas del equipo -->
     <div class="row d-flex justify-content-center mt-4">
-      <div class="col-5 col-xl-3 mx-2">
-        <app-top-goles />
+      <!-- Tabla de TOP goleadores -->
+      <div class="col-12 col-xl-3 mx-2 mb-2">
+        <div class="d-flex justify-content-center">
+          <app-top-goles />
+        </div>
       </div>
 
-    <!-- Tabla de TOP Partidos Jugados -->
-      <div class="col-5 col-xl-3 mx-2">
-        <app-top-pj />
+      <!-- Tabla de TOP Partidos Jugados -->
+      <div class="col-12 col-xl-3 mx-2 mb-2">
+        <div class="d-flex justify-content-center">
+          <app-top-pj />
+        </div>
       </div>
-    <!-- Tabla de TOP Tarjetas -->
-      <div class="col-5 col-xl-3 mx-2 mt-small">
-        <app-top-tarjetas />
+      <!-- Tabla de TOP Tarjetas -->
+      <div class="col-12 col-xl-3 mx-2 mt-small">
+        <div class="d-flex justify-content-center">
+          <app-top-tarjetas />
+        </div>
       </div>
-
-      <div class="col-5 mx-2"></div>
     </div>
   </div>
-  <div class="row p-4 ">
-    <h2>Jugadores</h2>
-    <div class="row mt-4  ">
-      <!--Cards de jugadores -->
-      <div class="row justify-content-center">
-        <div class="col-5 col-md-3 mx-2 mb-3" *ngFor="let index of [0, 1, 2, 3, 4, 5]">
-          <app-jugador/>
-        </div>
+  <!-- Cards de estadisticas de jugadores -->
+  <div class="p-4">
+    <h2 class="main-title">Jugadores</h2>
+    <div class="row mt-4 justify-content-center ">
+        <div
+          class="col-12 col-xl-3 mx-2 mb-3"
+          *ngFor="let index of [0, 1, 2, 3, 4, 5]"
+        >
+          <div class="d-flex justify-content-center">
+            <app-jugador />
+          </div>
       </div>
     </div>
   </div>

@@ -45,13 +45,40 @@
   color: #fff;
   margin-right: 8px;
 }
+
+.main-title {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.main-title::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #3498db; /* Color azul claro, puedes ajustar según tus preferencias */
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+
 @media (max-width: 767px) {
 
+
+
+  .main-title {
+    font-size: 1.4rem;
+  }
   .ml-3
   {
     margin-left: 0px;
   }
-
   /*CSS para los cards de estadisticas*/
   .card-size{
     width: 14rem;

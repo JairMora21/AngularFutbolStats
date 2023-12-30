@@ -6,11 +6,17 @@
   line-height: 12px;
 }
 
+.gold {
+  color: #FFD700; /* Para el color del texto */
+}
 @media (max-width: 767px) {
 
   .team-detail-stats {
     font-size: 10px;
     max-width: 30px;
     line-height: 8px;
+  }
+  .none{
+    display: none;
   }
 }

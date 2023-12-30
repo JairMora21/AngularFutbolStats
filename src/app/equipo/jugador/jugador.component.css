@@ -98,12 +98,3 @@
       color: rgba(24,26,31,.9);;
       margin-right: 8px;
     }
-
-@media (max-width: 767px) {
-
-  .player-detail-stats {
-    font-size: 10px;
-    max-width: 30px;
-    line-height: 8px;
-  }
-}
