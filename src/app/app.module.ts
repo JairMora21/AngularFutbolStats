@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EquipoComponent } from './equipo/equipo.component';
 import { PartidoComponent } from './partido/partido.component';
-import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { TemporadaComponent } from './equipo/temporada/temporada.component';
 import { InfoEquipoComponent } from './equipo/info-equipo/info-equipo.component';
 import { StatsComponent } from './equipo/stats/stats.component';
@@ -20,7 +19,6 @@ import { ResultadoComponent } from './partido/resultado/resultado.component';
     AppComponent,
     EquipoComponent,
     PartidoComponent,
-    EstadisticasComponent,
     TemporadaComponent,
     InfoEquipoComponent,
     StatsComponent,
