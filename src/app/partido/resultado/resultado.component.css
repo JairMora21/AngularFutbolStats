@@ -1,3 +1,30 @@
+.result-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  margin-right: 8px;
+}
+
+.win {
+  background: rgba(48, 211, 7, 0.9);
+}
+
+.tie {
+  background: rgba(42, 44, 42, 0.9);
+}
+
+.defeat {
+  background: rgba(216, 7, 7, 0.9);
+}
+
 
 .team-name{
   font-family: Neusa Next Pro;
@@ -22,14 +49,6 @@
 .linea-resultado{
   padding: 0 3px;
 }
-.fans-score-numbers {
-  top: 2px;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  min-width: 80px;
-}
 
 .icono-equipo {
   width:  30px;
@@ -46,3 +65,19 @@
 }
 
 
+@media (max-width: 767px) {
+
+  .result-badge {
+    font-size: 10px;
+  }
+  .team-name{
+    font-size: 10px;
+  }
+  .goles{
+    font-size: 14px;
+  }
+  .icono-equipo {
+    width:  24px;
+    height: 24px;
+  }
+}

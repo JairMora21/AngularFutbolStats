@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalService } from './modal-service.service';
 
 @Component({
   selector: 'app-resultado',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ResultadoComponent {
 
+  constructor(private modalService: ModalService) {}
+
+  openModal() {
+    this.modalService.openModal();
+  }
 }

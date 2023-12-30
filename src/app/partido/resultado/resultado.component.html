@@ -1,7 +1,10 @@
-<div class="row border p-2 hover-result">
+<div class="row p-2 hover-result" (click)="openModal()" *ngFor="let index of [1, 2, 3] ">
+  <div class="col-1 d-flex align-items-center">
+    <div class="result-badge win">V</div>
+  </div>
   <div class="col-2">
     <div class="d-flex align-items-center justify-content-end team-name p-1">
-      Amsterdam
+      AMSTERDAM
     </div>
   </div>
   <div class="col-2 d-flex justify-content-end">
@@ -20,40 +23,11 @@
     />
   </div>
   <div class="col-2">
-    <div class="d-flex align-items-center team-name p-1">Real Madrid</div>
+    <div class="d-flex align-items-center team-name p-1">REAL MADRID</div>
   </div>
-  <div class="col-2 d-flex justify-content-end align-items-center">
+  <div class="col-1 d-flex justify-content-end align-items-center">
     <i class="fa-solid fa-arrow-right"></i>
   </div>
 </div>
 
-<div class="row border p-2 hover-result">
-  <div class="col-2">
-    <div class="d-flex align-items-center justify-content-end team-name p-1">
-      Amsterdam
-    </div>
-  </div>
-  <div class="col-2 d-flex justify-content-end">
-    <img src="assets/real.png" alt="escudo" class="icono-equipo" />
-  </div>
-  <div class="col-2 align-content-center d-flex justify-content-center">
-    <div class="goles">3</div>
-    <div class="linea-resultado">-</div>
-    <div class="goles">1</div>
-  </div>
-  <div class="col-2">
-    <img
-      src="https://static.vecteezy.com/system/resources/previews/023/579/944/original/illustration-of-soccer-logo-it-s-for-success-concept-png.png"
-      alt="escudo"
-      class="icono-equipo"
-    />
-  </div>
-  <div class="col-2">
-    <div class="d-flex align-items-center team-name p-1">Real Madrid</div>
-  </div>
-  <div class="col-2 d-flex justify-content-end align-items-center">
-
-    <i class="fa-solid fa-arrow-right"></i>
-  </div>
-</div>
 
