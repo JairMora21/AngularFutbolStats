@@ -21,43 +21,34 @@
     <button class="btn text-primary"
     type="button"
     data-bs-toggle="modal"
-    data-bs-target="#proveedorModal"
+    data-bs-target="#goleadorModal"
     title="Mostrar estadisticas"
     data-placement="top">
     Ver Todos<i class="fa-solid fa-arrow-right text-primary mx-2 "></i></button>
   </div>
 </div>
 
-<div class="modal fade" id="proveedorModal" tabindex="-1" role="dialog" aria-labelledby="proveedorModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+<!-- Modal -->
+<div class="modal fade" id="goleadorModal" tabindex="-1" aria-labelledby="goleadorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title title-stats" id="exampleModalLabel">Estadisticas de jugador</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title title-stats" id="goleadorModalLabel">Goleadores</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body row ">
-        <div class="d-flex justify-content-between p-3">
-          <div class="col-6 stats-name"></div>
-          <div class="col-2 text-end"></div>
-          <div class="col-2"></div>
-          <div class="col-2 text-end"><i class="fa-solid fa-futbol"></i></div>
-        </div>
-        <div
-          class="card-body text-center d-flex"
-          *ngFor="let index of [1, 2, 3, 4, 5]"
-        >
+        <div class="card-body text-center d-flex m-1  p-1 " *ngFor="let index of [1, 2, 3, 4, 5]" >
           <div class="col-1">{{ index }}</div>
-          <div class="col-2">
+          <div class="col-1 text-start ">
             <i class="fa-solid fa-circle-user mt-1"></i>
           </div>
           <div class="col-8 text-start">Jair Mora</div>
-          <div class="col-1 text-end">4</div>
+          <div class="col-2 ">4</div>
         </div>
-      </div>
-      <div class="modal-footer">
       </div>
     </div>
   </div>
 </div>
+
+

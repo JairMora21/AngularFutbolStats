@@ -13,6 +13,7 @@ import { TopPJComponent } from './equipo/top-pj/top-pj.component';
 import { TopTarjetasComponent } from './equipo/top-tarjetas/top-tarjetas.component';
 import { JugadorComponent } from './equipo/jugador/jugador.component';
 import { ResultadoComponent } from './partido/resultado/resultado.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ResultadoComponent } from './partido/resultado/resultado.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

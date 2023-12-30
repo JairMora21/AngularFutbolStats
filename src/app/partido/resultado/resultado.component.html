@@ -1,4 +1,4 @@
-<div class="row p-2 hover-result" (click)="openModal()" *ngFor="let index of [1, 2, 3] ">
+<div class="row p-2 hover-result" (click)="open(content)"*ngFor="let index of [1, 2, 3]">
   <div class="col-1 d-flex align-items-center">
     <div class="result-badge win">V</div>
   </div>
@@ -30,4 +30,77 @@
   </div>
 </div>
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title title-modal tie" id="modal-basic-title">Partido</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="row p-2 hover-result">
+      <div class="col-3">
+        <div
+          class="d-flex align-items-center justify-content-end team-name p-1"
+        >
+          AMSTERDAM
+        </div>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <img src="assets/real.png" alt="escudo" class="icono-equipo" />
+      </div>
+      <div class="col-2 align-content-center d-flex justify-content-center">
+        <div class="goles">3</div>
+        <div class="linea-resultado">-</div>
+        <div class="goles">1</div>
+      </div>
+      <div class="col-2">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/023/579/944/original/illustration-of-soccer-logo-it-s-for-success-concept-png.png"
+          alt="escudo"
+          class="icono-equipo"
+        />
+      </div>
+      <div class="col-3">
+        <div class="d-flex align-items-center team-name p-1">REAL MADRID</div>
+      </div>
+    </div>
+    <hr />
+    <div class="mb-3">
+      <h4 class="game-events">Goles</h4>
+      <div class="d-flex mx-1" *ngFor="let index of [1, 2, 3]">
+        <div class="mx-1"><i class="fa-solid fa-futbol"></i></div>
+        <div class="mx-1">(15)</div>
+        <div class="">Jair Mora</div>
+      </div>
+    </div>
 
+    <div class="mb-3">
+      <h4 class="game-events">Tarjetas</h4>
+      <div class="d-flex mx-1" *ngFor="let index of [1, 2, 3]">
+        <div class="mx-1">
+          <i class="fa-duotone fa-sd-card text-warning"></i>
+        </div>
+        <div class="mx-1">(15)</div>
+        <div class="">Jair Mora</div>
+      </div>
+    </div>
+    <div class="">
+      <h4 class="game-events">Alineaciones</h4>
+      <div class="d-flex mx-1" *ngFor="let index of [1, 2, 3]">
+        <div class="mx-1"><i class="fa-solid fa-circle-user mt-1"></i></div>
+        <div class="mx-1">(15)</div>
+        <div class="">Jair Mora</div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- <div class="match-result-body">
+      <div class="match-result-header">
+      </div>
+    </div> -->
+  </div>
+</ng-template>

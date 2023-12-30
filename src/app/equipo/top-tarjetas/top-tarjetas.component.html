@@ -28,9 +28,49 @@
     <button class="btn text-primary"
     type="button"
     data-bs-toggle="modal"
-    data-bs-target="#proveedorModal"
+    data-bs-target="#tarjetasModal"
     title="Mostrar estadisticas"
     data-placement="top">
     Ver Todos<i class="fa-solid fa-arrow-right text-primary mx-2 "></i></button>
   </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="tarjetasModal" tabindex="-1" aria-labelledby="tarjetasModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title title-stats" id="tarjetasModalLabel">Tarjetas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body row ">
+        <div class="d-flex justify-content-between">
+          <div class="col-6 "></div>
+          <div class="col-2"></div>
+          <div class="col-1"></div>
+          <div class="col-1 text-end">
+            <i class="fa-duotone fa-sd-card text-warning"></i>
+          </div>
+          <div class="col-1 text-end">
+            <i class="fa-duotone fa-sd-card text-danger"></i>
+          </div>
+          <div class="col-1 text-end">#</div>
+        </div>
+        <div class="card-body text-center d-flex m-1 " *ngFor="let index of [1, 2, 3, 4, 5]" >
+          <div class="col-1">{{ index }}</div>
+          <div class="col-1 text-start ">
+            <i class="fa-solid fa-circle-user mt-1"></i>
+          </div>
+          <div class="col-7 text-start">Jair Mora</div>
+          <div class="col-1 ">4</div>
+          <div class="col-1 ">4</div>
+          <div class="col-1 ">4</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

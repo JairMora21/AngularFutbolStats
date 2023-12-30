@@ -1,8 +1,4 @@
-.icono-equipo{
-  width: 110px;
-  height: 110px;
-  margin-top: 15px;
-}
+
 
 .border-stats{
   border-radius: 10px;
@@ -50,11 +46,6 @@
   margin-right: 8px;
 }
 @media (max-width: 767px) {
-  .icono-equipo{
-    width: 70px;
-    height: 70px;
-    margin-top: 20px;
-  }
 
   .ml-3
   {
