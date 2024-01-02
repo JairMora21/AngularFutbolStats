@@ -5,10 +5,6 @@ export interface ITemporada {
   result:        Result[];
 }
 
-export interface Errores {
-  statusCode:    number;
-  errorMessages: any;
-}
 export interface Result {
   id:              number;
   clasificacion:   null;

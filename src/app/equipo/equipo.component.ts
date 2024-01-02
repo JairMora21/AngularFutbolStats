@@ -6,5 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EquipoComponent {
 
+  idTemporada: number = 0;
 
+  temporadaRecibida($event: number){
+    this.idTemporada = $event;
+  }
 }

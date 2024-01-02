@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { MiAPiServiceService } from '../../services/mi-api.service';
-import {IEquipoStats} from '../../models/equipoStats.model';
+import { DataService } from 'src/app/services/data.service';
+
+import { IEquipoStats, Result } from '../../models/equipoStats.model';
+import { Errores } from '../../models/error.model';
+
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -10,34 +17,44 @@ import {IEquipoStats} from '../../models/equipoStats.model';
 })
 export class StatsComponent implements OnInit {
 
-  constructor(private miApiService: MiAPiServiceService) {}
+  constructor(
+    private miApiService: MiAPiServiceService,
+    private route: ActivatedRoute,
+    private data: DataService ) { }
 
-  equipoStats: IEquipoStats = {
-    statusCode: 0,
-    isSuccess: false,
-    errorMessages: null,
-    result: {
-      golesAnotados: 0,
-      golesRecibidos: 0,
-      golesDiferencia: 0,
-      amarillas: 0,
-      rojas: 0,
-      partidosJugados: 0,
-      partidosGanados: 0,
-      partidosEmpatados: 0,
-      partidosPerdidos: 0
-    }
-  };
-  puntosGanados: number = 0;
-  puntos: number = 0;
+  equipoStats: Result = {} as Result;
+  errores: Errores = {} as Errores;
 
   ngOnInit(): void {
-    this.miApiService.getTeamStats(1).subscribe({
-      next: (data: IEquipoStats) => {
-        this.equipoStats = data;
+    const temporada: number | null = this.idTemporada();
+    this.ObtenerEquipoStats(temporada)
+  }
 
-        this.puntosGanados = this.equipoStats.result.partidosGanados * 3;
-        this.puntos = this.puntosGanados + this.equipoStats.result.partidosEmpatados;
+  idEquipo(): number {
+    const idEquipoParam = this.route.snapshot.paramMap.get('id');
+    const idEquipo = idEquipoParam ? +idEquipoParam : 0;
+    return idEquipo;
+  }
+
+  idTemporada(): number | null {
+    const temporadaId: number | null = null;
+    this.data.temporadaId$.subscribe((idTemporada) => {
+      console.log('Hola desde stats: ' + idTemporada);
+    });
+    return temporadaId === 0 ? null : temporadaId;
+  }
+
+  ObtenerEquipoStats(idTemporada: number | null) {
+    this.miApiService.getTeamStats(this.idEquipo(), idTemporada).subscribe({
+      next: (data: IEquipoStats) => {
+        if (data.isSuccess == false) {
+          this.errores.errorMessages = data.errorMessages;
+          this.errores.statusCode = data.statusCode;
+          console.log(this.errores);
+        }
+        else {
+          this.equipoStats = data.result;
+        }
       },
       error: (error: any) => {
         console.error('Error en la solicitud HTTP:', error);

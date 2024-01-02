@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DataService } from './services/data.service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     RouterModule
   ],
-  providers: [RouterModule],
+  providers: [RouterModule, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

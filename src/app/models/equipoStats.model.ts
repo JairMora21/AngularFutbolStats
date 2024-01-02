@@ -15,4 +15,5 @@ export interface Result {
   partidosGanados:   number;
   partidosEmpatados: number;
   partidosPerdidos:  number;
+  puntos: number;
 }

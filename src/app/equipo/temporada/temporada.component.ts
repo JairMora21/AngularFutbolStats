@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {ITemporada, Result, Errores} from '../../models/temporada.model';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {ITemporada, Result} from '../../models/temporada.model';
+import {Errores} from '../../models/error.model';
+
 import {MiAPiServiceService} from '../../services/mi-api.service';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import {DataService} from '../../services/data.service';
+import {ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-temporada',
@@ -13,14 +15,30 @@ export class TemporadaComponent {
 
   constructor(
     private miApiService: MiAPiServiceService,
-    private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private data: DataService ) {}
+
+    temporadaSelect: number = 0;
+
+  seleccionarTemporada(event: any) {
+    this.temporadaSelect = event.target.value;
+    this.data.setTemporadaId(this.temporadaSelect)
+    console.log('Hola desde temporada '+ this.data.getTemporadaId());
+  }
 
     temporadas: Result[] = []
 
-    errores: Errores= {
-      errorMessages : 0,
-      statusCode: 0
+    errores: Errores= { } as Errores
+
+     historica: Result = {
+      id: 0,
+      clasificacion: null,
+      equipo: 'Histórica',
+      noTemporada: 0,
+      fechaInicio: new Date(),
+      fechaFinal: null,
+      posicion: null,
+      nombreTemporada: 'Histórica'
     };
 
     ngOnInit() {
@@ -29,11 +47,14 @@ export class TemporadaComponent {
       });
     }
 
+    idEquipo(): number{
+      const idEquipoParam = this.route.snapshot.paramMap.get('id');
+      const idEquipo = idEquipoParam ? +idEquipoParam : 0;
+      return idEquipo;
+    }
     ObtenerTemporadas(){
-    const idEquipoParam = this.route.snapshot.paramMap.get('id');
-    const idEquipo = idEquipoParam ? +idEquipoParam : 0;
-    // Llama a la API para obtener el equipo correspondiente al id
-    this.miApiService.getTemporadas(idEquipo).subscribe({
+
+      this.miApiService.getTemporadas(this.idEquipo()).subscribe({
       next: (data: ITemporada) => {
         if(data.isSuccess == false){
           this.errores.errorMessages = data.errorMessages;
@@ -41,6 +62,7 @@ export class TemporadaComponent {
           console.log(this.errores);
         } else {
           this.temporadas = data.result;
+          this.temporadas.push(this.historica);
         }
       },
       error: (error) => {

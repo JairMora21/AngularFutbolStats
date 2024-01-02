@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {IEquipos, Result} from '../app/models/equipos.model';
+import {Errores} from '../app/models/error.model';
 import {MiAPiServiceService} from '../app/services/mi-api.service';
 import { Router } from '@angular/router';
 
@@ -16,17 +17,24 @@ export class AppComponent {
   equipoSeleccionado: number = 0;
 
   resultadosEquipos: Result[] = [];
+  error : Errores = {} as Errores;
 
 constructor(private miApiService: MiAPiServiceService, private router: Router) {}
 
-ngOnInit() {
+ngOnInit(): void {
   this.obtenerEquipos();
 }
 
 obtenerEquipos() {
   this.miApiService.getTeams().subscribe({
     next: (data: IEquipos) => {
-      this.resultadosEquipos = data.result;
+      if(data.isSuccess == false){
+        this.error.errorMessages = data.errorMessages;
+        this.error.statusCode = data.statusCode;
+        console.log(this.error);
+      } else {
+        this.resultadosEquipos = data.result;
+      }
     },
     error: (error) => {
       console.error('Error al obtener equipos', error);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IEquipo, Result} from '../../models/equipos.model';
+import {Errores} from '../../models/error.model';
 import {MiAPiServiceService} from '../../services/mi-api.service';
-import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -12,33 +12,32 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InfoEquipoComponent {
 
-  constructor(private miApiService: MiAPiServiceService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private miApiService: MiAPiServiceService, private route: ActivatedRoute) {}
 
-  equipo: Result = {
-    id: 0,
-    nombre: "",
-    lugar: "",
-    escudo: ""
-  };
+  equipo: Result = {} as Result;
+  error: Errores = {} as Errores;
  ngOnInit() {
-    // Llama a obtenerEquipo() cuando se inicializa el componente
-    this.obtenerEquipo();
-
-    // Suscríbete a cambios en los parámetros de la ruta
     this.route.params.subscribe(params => {
       // Llama a obtenerEquipo() cuando cambian los parámetros de la ruta
       this.obtenerEquipo();
     });
   }
 
-  obtenerEquipo() {
+  idEquipo(): number{
     // Obtén el id del equipo desde los parámetros de la ruta
     const idEquipoParam = this.route.snapshot.paramMap.get('id');
     const idEquipo = idEquipoParam ? +idEquipoParam : 0;
-
+    return idEquipo;
+  }
+  obtenerEquipo() {
     // Llama a la API para obtener el equipo correspondiente al id
-    this.miApiService.getTeam(idEquipo).subscribe({
+    this.miApiService.getTeam(this.idEquipo()).subscribe({
       next: (data: IEquipo) => {
+        if (data.isSuccess == false) {
+          this.error.errorMessages = data.errorMessages;
+          this.error.statusCode = data.statusCode;
+          console.log(this.error);
+        }
         this.equipo = data.result;
       },
       error: (error) => {
