@@ -2,79 +2,83 @@
   <!--Partidos Jugados-->
   <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
-      <i class="fa-solid fa-circle-check none "></i>
+      <i class="fa-solid fa-circle-check none"></i>
       PJ
     </p>
-    <p>15</p>
+    <p>{{ equipoStats.result.partidosJugados }}</p>
   </div>
-    <!--Partidos Ganadas-->
+  <!--Partidos Ganadas-->
   <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
       <i class="fa-solid fa-circle-check text-success none"></i>
-      PG</p>
-    <p>15</p>
+      PG
+    </p>
+    <p>{{ equipoStats.result.partidosGanados }}</p>
   </div>
-    <!--Partidos Empatados-->
+  <!--Partidos Empatados-->
   <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
       <i class="fa-solid fa-circle-minus none"></i>
-      PE</p>
-    <p>15</p>
+      PE
+    </p>
+    <p>{{ equipoStats.result.partidosEmpatados }}</p>
   </div>
-    <!--Partidos Perdidos-->
-<div class="flex-grow-1 px-1">
+  <!--Partidos Perdidos-->
+  <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
       <i class="fa-solid fa-circle-xmark text-danger none"></i>
       PP
     </p>
-    <p>15</p>
+    <p>{{ equipoStats.result.partidosPerdidos }}</p>
   </div>
-    <!--Goles a Favor-->
+  <!--Goles a Favor-->
   <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
       <i class="fa-solid fa-futbol text-success none"></i>
       GF
     </p>
-    <p>15</p>
+    <p>{{ equipoStats.result.golesAnotados }}</p>
   </div>
-    <!--Goles En Contra-->
-<div class="flex-grow-1 px-1">
+  <!--Goles En Contra-->
+  <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
       <i class="fa-solid fa-futbol text-danger none"></i>
       GC
     </p>
-    <p>15</p>
+    <p>{{ equipoStats.result.golesRecibidos }}</p>
   </div>
-    <!--Diferencia de Goles-->
-<div class="flex-grow-1 px-1">
+  <!--Diferencia de Goles-->
+  <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
       <i class="fa-solid fa-futbol none"></i>
       DG
     </p>
-    <p>15</p>
+    <p>{{ equipoStats.result.golesDiferencia }}</p>
   </div>
-    <!--Tarjetas Amarillas-->
-<div class="flex-grow-1 px-1">
+  <!--Tarjetas Amarillas-->
+  <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
-      <i class="fa-duotone fa-sd-card text-warning none"></i>
+      <i class="fa-solid fa-sd-card text-warning none"></i>
       TA
     </p>
-    <p>15</p>
+    <p>{{ equipoStats.result.amarillas }}</p>
   </div>
-    <!--Tarjetas Rojas-->
-<div class="flex-grow-1 px-1">
+
+  <!--Tarjetas Rojas-->
+  <div class="flex-grow-1 px-1">
     <p class="team-detail-stats">
-      <i class="fa-duotone fa-sd-card text-danger none"></i>
+      <i class="fa-solid fa-sd-card text-danger none"></i>
       TR
     </p>
-    <p>15</p>
+    <p>{{ equipoStats.result.rojas }}</p>
   </div>
-    <!--Puntos-->
-    <div class="flex-grow-1 px-1">
-      <p class="team-detail-stats">
-        <i class="fa-solid fa-star gold none"></i>
-        PTs
-      </p>
-      <p>15</p>
-    </div>
+
+  <!--Puntos-->
+  <div class="flex-grow-1 px-1">
+    <p class="team-detail-stats">
+      <i class="fa-solid fa-star gold none"></i>
+      PTs
+    </p>
+    <p>{{ puntos }}</p>
+  </div>
 </div>
