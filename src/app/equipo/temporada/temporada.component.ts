@@ -23,7 +23,6 @@ export class TemporadaComponent {
   seleccionarTemporada(event: any) {
     this.temporadaSelect = event.target.value;
     this.data.setTemporadaId(this.temporadaSelect)
-    console.log('Hola desde temporada '+ this.data.getTemporadaId());
   }
 
     temporadas: Result[] = []

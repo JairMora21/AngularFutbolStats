@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,14 +7,19 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
 
-  private temporadaIdSubject = new BehaviorSubject<number>(0);
-  temporadaId$ = this.temporadaIdSubject.asObservable();
+ // BehaviorSubject que almacena el valor actual de la temporada con un valor inicial de 0.
+ private temporadaIdSubject = new BehaviorSubject<number>(0);
 
-  setTemporadaId(id: number) {
-    this.temporadaIdSubject.next(id);
-  }
+ // Observable público para que los componentes puedan suscribirse a cambios en el valor de la temporada.
+ public temporadaId$: Observable<number> = this.temporadaIdSubject.asObservable();
 
-  getTemporadaId(): number {
-    return this.temporadaIdSubject.value;
-  }
+ // Método para actualizar el valor de la temporada.
+ setTemporadaId(id: number): void {
+   this.temporadaIdSubject.next(id);
+ }
+
+ // Método para obtener el valor actual de la temporada.
+ getTemporadaId(): number {
+   return this.temporadaIdSubject.value;
+ }
 }

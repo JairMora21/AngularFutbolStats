@@ -26,8 +26,9 @@ export class StatsComponent implements OnInit {
   errores: Errores = {} as Errores;
 
   ngOnInit(): void {
-    const temporada: number | null = this.idTemporada();
-    this.ObtenerEquipoStats(temporada)
+    this.route.params.subscribe(params => {
+      this.ObtenerEquipoStats()
+    });
   }
 
   idEquipo(): number {
@@ -36,16 +37,8 @@ export class StatsComponent implements OnInit {
     return idEquipo;
   }
 
-  idTemporada(): number | null {
-    const temporadaId: number | null = null;
-    this.data.temporadaId$.subscribe((idTemporada) => {
-      console.log('Hola desde stats: ' + idTemporada);
-    });
-    return temporadaId === 0 ? null : temporadaId;
-  }
-
-  ObtenerEquipoStats(idTemporada: number | null) {
-    this.miApiService.getTeamStats(this.idEquipo(), idTemporada).subscribe({
+  ObtenerEquipoStats() {
+    this.miApiService.getTeamStats(this.idEquipo()).subscribe({
       next: (data: IEquipoStats) => {
         if (data.isSuccess == false) {
           this.errores.errorMessages = data.errorMessages;
@@ -61,4 +54,13 @@ export class StatsComponent implements OnInit {
       }
     });
   }
+
+
+   // idTemporada(): number | null {
+  //   const temporadaId: number | null = null;
+  //   this.data.temporadaId$.subscribe((idTemporada) => {
+  //     console.log('Hola desde stats: ' + idTemporada);
+  //   });
+  //   return temporadaId === 0 ? null : temporadaId;
+  // }
 }
