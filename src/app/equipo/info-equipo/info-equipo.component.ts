@@ -16,6 +16,7 @@ export class InfoEquipoComponent {
 
   equipo: Result = {} as Result;
   error: Errores = {} as Errores;
+
  ngOnInit() {
     this.route.params.subscribe(params => {
       // Llama a obtenerEquipo() cuando cambian los parámetros de la ruta

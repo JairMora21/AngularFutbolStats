@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
+
 import { IEquipoStats } from '../models/equipoStats.model';
 import { IEquipos, IEquipo } from '../models/equipos.model';
-import { ITemporada } from '../models/temporada.model';
-import { switchMap } from 'rxjs/operators';
-import { DataService } from './data.service';
 import { ITopStats, ITopStatsCards } from '../models/topStats.model';
-import { HttpParams } from '@angular/common/http';
+import { ITemporada } from '../models/temporada.model';
+import { IJugadores, IJugadoresStats } from '../models/jugador.model';
+
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { DataService } from './data.service';
 
 
 
@@ -20,6 +24,25 @@ export class MiAPiServiceService {
   private apiUrl = 'http://localhost:9097/api'
 
   constructor(private _http: HttpClient, private data: DataService) { }
+
+  getJugadores(idEquipo: number): Observable<IJugadores> {
+    const url = `${this.apiUrl}/Equipo/Jugadores/${idEquipo}`;
+    return this._http.get<IJugadores>(url);
+  }
+
+  getJugadorStats(idJugador: number): Observable<IJugadoresStats> {
+    return this.data.temporadaId$.pipe(
+      switchMap((idTemporada) => {
+        let params = new HttpParams();
+
+        if (idTemporada !== 0) {
+          params = params.set('idTemporada', idTemporada.toString());
+        }
+        const url = `${this.apiUrl}/Equipo/JugadorStats/${idJugador}`;
+        return this._http.get<IJugadoresStats>(url, { params });
+      })
+    );
+  }
 
 
   /**
@@ -84,6 +107,9 @@ getTopPartidos(idEquipo: number, limite: number | null): Observable<ITopStats> {
       })
     );
   }
+
+
+
 
 
 

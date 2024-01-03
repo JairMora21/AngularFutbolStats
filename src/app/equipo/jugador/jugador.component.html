@@ -1,65 +1,100 @@
-<div class="card cardcolor card-size">
-  <div>
-    <div>
-      <i
-        class="mt-2 card-img-top fa-solid fa-circle-user fa-5x d-flex justify-content-center align-items-center"
-      ></i>
-    </div>
-    <div class="number-container">
-      <div class="number-mask">15</div>
-    </div>
-  </div>
-  <div class="card-body text-center">
-    <div class="card-title-container">
-      <h5 class="card-title">Jair Mora</h5>
-      <p class="card-text">Defensa</p>
-      <button
-        type="button"
-        class="btn btn-outline-primary btn-details"
-        data-bs-toggle="modal"
-        data-bs-target="#statsJugador"
-        title="Mostrar estadisticas"
-        data-placement="top">
-        <i class="fa-solid fa-chart-simple"></i>
-      </button>
+<div class="row mt-4 justify-content-center">
+  <div class="col-12 col-xl-3 mx-2 mb-3" *ngFor="let jugador of jugadores">
+    <div class="d-flex justify-content-center">
+      <div class="card cardcolor card-size">
+        <div>
+          <div>
+            <i
+              class="mt-2 card-img-top fa-solid fa-circle-user fa-5x d-flex justify-content-center align-items-center"
+            ></i>
+          </div>
+          <div class="number-container">
+            <div class="number-mask">{{ jugador.dorsal }}</div>
+          </div>
+        </div>
+        <div class="card-body text-center">
+          <div class="card-title-container">
+            <h5 class="card-title">{{ jugador.nombre }}</h5>
+            <p class="card-text">{{ jugador.posicion }}</p>
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-details"
+              data-bs-toggle="modal"
+              [attr.data-target]="'#modal' + jugador.id"
+              title="Mostrar estadisticas"
+              data-placement="top"
+              (click)="obtenerStatsJugadores(jugador.id)"
+            >
+              <i class="fa-solid fa-chart-simple"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="myModal{{ jugador.id }}"
+        tabindex="-1"
+        aria-labelledby="statsJugadorLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title title-stats" id="statsJugadorLabel">
+                Estadisticas de jugador
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mx-2 title-stats-player">Historico</div>
+              <div class="d-flex row border-stats-player m-2 p-2">
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-solid fa-circle-check text-success mx-1"></i>PJ
+                </div>
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-solid fa-futbol mx-1"></i>G
+                </div>
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-duotone fa-sd-card text-warning mx-1"></i>TA
+                </div>
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-duotone fa-sd-card text-danger mx-1"></i>TR
+                </div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.PartidosJugadosTotal}}</span></div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.GolesTotal}}</span></div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.AmarillasTotal}}</span></div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.RojasTotal}}</span></div>
+              </div>
+              <div class="mx-2 title-stats-player">Temporada: 2023/2024</div>
+              <div class="d-flex row border-stats-player m-2 p-2">
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-solid fa-circle-check text-success mx-1"></i>PJ
+                </div>
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-solid fa-futbol mx-1"></i>G
+                </div>
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-duotone fa-sd-card text-warning mx-1"></i>TA
+                </div>
+                <div class="col-3 player-detail-stats">
+                  <i class="fa-duotone fa-sd-card text-danger mx-1"></i>TR
+                </div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.PartidosJugadosTemp}}</span></div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.GolesTemp}}</span></div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.AmarillasTemp}}</span></div>
+                <div class="col-3"><span class="ml-1">{{jugadorStats.RojasTemp}}</span></div>
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="statsJugador" tabindex="-1" aria-labelledby="statsJugadorLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title title-stats" id="statsJugadorLabel">Estadisticas de jugador</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mx-2 title-stats-player">Historico</div>
-        <div class="d-flex row border-stats-player  m-2 p-2  ">
-          <div class="col-3 player-detail-stats"><i class="fa-solid fa-circle-check text-success mx-1 "></i>PJ</div>
-          <div class="col-3 player-detail-stats"><i class="fa-solid fa-futbol mx-1"></i>G</div>
-          <div class="col-3 player-detail-stats"><i class="fa-duotone fa-sd-card text-warning mx-1"></i>TA</div>
-          <div class="col-3 player-detail-stats"><i class="fa-duotone fa-sd-card text-danger mx-1"></i>TR</div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-        </div>
-        <div class="mx-2 title-stats-player">Temporada: 2023/2024</div>
-        <div class="d-flex row border-stats-player  m-2 p-2  ">
-          <div class="col-3 player-detail-stats"><i class="fa-solid fa-circle-check text-success mx-1 "></i>PJ</div>
-          <div class="col-3 player-detail-stats"><i class="fa-solid fa-futbol mx-1"></i>G</div>
-          <div class="col-3 player-detail-stats"><i class="fa-duotone fa-sd-card text-warning mx-1"></i>TA</div>
-          <div class="col-3 player-detail-stats"><i class="fa-duotone fa-sd-card text-danger mx-1"></i>TR</div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-          <div class="col-3"><span class="ml-1">0</span></div>
-        </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-
-
