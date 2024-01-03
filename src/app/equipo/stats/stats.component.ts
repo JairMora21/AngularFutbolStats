@@ -19,8 +19,7 @@ export class StatsComponent implements OnInit {
 
   constructor(
     private miApiService: MiAPiServiceService,
-    private route: ActivatedRoute,
-    private data: DataService ) { }
+    private route: ActivatedRoute) { }
 
   equipoStats: Result = {} as Result;
   errores: Errores = {} as Errores;

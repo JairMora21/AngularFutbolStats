@@ -13,16 +13,16 @@
   </div>
   <div
     class="card-body text-center d-flex"
-    *ngFor="let index of [1, 2, 3, 4, 5]"
+    *ngFor="let tarjetas of TopTarjetasLimit; let i = index"
   >
-    <div class="col-1">{{ index }}</div>
+    <div class="col-1">{{ 1 + i }}</div>
     <div class="col-2">
       <i class="fa-solid fa-circle-user mt-1"></i>
     </div>
-    <div class="col-6 text-start">Jair Mora</div>
-    <div class="col-1 text-end">3</div>
-    <div class="col-1 text-end">1</div>
-    <div class="col-1 text-end">4</div>
+    <div class="col-6 text-start">{{tarjetas.nombre}}</div>
+    <div class="col-1 text-end">{{tarjetas.amarillas}}</div>
+    <div class="col-1 text-end">{{tarjetas.rojas}}</div>
+    <div class="col-1 text-end">{{tarjetas.total}}</div>
   </div>
   <div class="card-footer  d-flex justify-content-end ">
     <button class="btn text-primary"
@@ -57,15 +57,15 @@
           </div>
           <div class="col-1 text-end">#</div>
         </div>
-        <div class="card-body text-center d-flex m-1 " *ngFor="let index of [1, 2, 3, 4, 5]" >
-          <div class="col-1">{{ index }}</div>
+        <div class="card-body text-center d-flex m-1 "*ngFor="let tarjetas of TopTarjetas; let i = index" >
+          <div class="col-1">{{ i + 1 }}</div>
           <div class="col-1 text-start ">
             <i class="fa-solid fa-circle-user mt-1"></i>
           </div>
-          <div class="col-7 text-start">Jair Mora</div>
-          <div class="col-1 ">4</div>
-          <div class="col-1 ">4</div>
-          <div class="col-1 ">4</div>
+          <div class="col-7 text-start">{{tarjetas.nombre}}</div>
+          <div class="col-1 ">{{tarjetas.amarillas}}</div>
+          <div class="col-1 ">{{tarjetas.rojas}}</div>
+          <div class="col-1 ">{{tarjetas.total}}</div>
 
         </div>
       </div>

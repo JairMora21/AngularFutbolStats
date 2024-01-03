@@ -8,14 +8,14 @@
   </div>
   <div
     class="card-body text-center d-flex"
-    *ngFor="let index of [1, 2, 3, 4, 5]"
+    *ngFor="let goleadores of TopGolesLimit; let i = index"
   >
-    <div class="col-1">{{ index }}</div>
+    <div class="col-1">{{ i + 1 }}</div>
     <div class="col-2">
       <i class="fa-solid fa-circle-user mt-1"></i>
     </div>
-    <div class="col-8 text-start">Jair Mora</div>
-    <div class="col-1 text-end">4</div>
+    <div class="col-8 text-start">{{goleadores.nombre}}</div>
+    <div class="col-1 text-end">{{goleadores.cantidad}}</div>
   </div>
   <div class="card-footer  d-flex justify-content-end ">
     <button class="btn text-primary"
@@ -38,13 +38,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body row ">
-        <div class="card-body text-center d-flex m-1  p-1 " *ngFor="let index of [1, 2, 3, 4, 5]" >
-          <div class="col-1">{{ index }}</div>
+        <div class="card-body text-center d-flex m-1  p-1 " *ngFor="let goleadores of TopGoles; let i = index" >
+          <div class="col-1">{{ i + 1 }}</div>
           <div class="col-1 text-start ">
             <i class="fa-solid fa-circle-user mt-1"></i>
           </div>
-          <div class="col-8 text-start">Jair Mora</div>
-          <div class="col-2 ">4</div>
+          <div class="col-8 text-start">{{goleadores.nombre}}</div>
+          <div class="col-2 ">{{goleadores.cantidad}}</div>
         </div>
       </div>
     </div>
