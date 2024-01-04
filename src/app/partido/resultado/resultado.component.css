@@ -17,6 +17,24 @@
   margin-right: 8px;
 }
 
+.data-match{
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 4px 8px;
+
+  font-weight: 500;
+  color: #fff;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.date-match{
+  color: #848999;
+  text-shadow: 0 1px 6px rgba(0,0,0,.0402514);
+  font-size: 13px;
+}
+
+
 .win {
   background: rgba(48, 211, 7, 0.9);
 }
@@ -24,19 +42,39 @@
 .tie {
   background: rgba(42, 44, 42, 0.9);
 }
-
 .defeat {
   background: rgba(216, 7, 7, 0.9);
+}
+
+.redCard {
+  color: rgba(216, 7, 7, 0.9);
+}
+
+.yellowCard{
+color: yellow;
+}
+
+
+.title-color {
+  background: rgba(42, 44, 42, 0.9);
+}
+
+
+.type-match {
+
+  background: rgb(54 175 255 / 90%)
 }
 
 .team-name{
   font-family: sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   color: #212329;
+
+
 }
 .goles{
     font-family: Neusa Next Pro;
@@ -54,6 +92,11 @@
 .icono-equipo {
   width:  34px;
   height: 34px;
+}
+
+.icono-equipo-modal {
+  width:  45px;
+  height: 45px;
 }
 
 .hover-result {
@@ -80,14 +123,22 @@
     font-size: 10px;
   }
   .team-name{
-    font-size: 11px;
+    font-size: 14px;
   }
   .goles{
     font-size: 14px;
   }
+  .date-match{
+    font-size: 10px;
+  }
   .icono-equipo {
-    width:  24px;
-    height: 24px;
+    width:  21px;
+    height: 21px;
+  }
+
+  .data-match{
+    font-size: 12px;
+
   }
 }
 

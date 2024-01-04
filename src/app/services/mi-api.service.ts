@@ -7,6 +7,8 @@ import { IEquipos, IEquipo } from '../models/equipos.model';
 import { ITopStats, ITopStatsCards } from '../models/topStats.model';
 import { ITemporada } from '../models/temporada.model';
 import { IJugadores, IJugadoresStats } from '../models/jugador.model';
+import { IPartido, IPartidoStats } from '../models/partido.model';
+
 
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -24,6 +26,21 @@ export class MiAPiServiceService {
   private apiUrl = 'http://localhost:9097/api'
 
   constructor(private _http: HttpClient, private data: DataService) { }
+
+
+  getPartidos(): Observable<IPartido> {
+    return this.data.temporadaId$.pipe(
+      switchMap((idTemporada) => {
+        const url = `${this.apiUrl}/Partido/Partidos${idTemporada}`;
+        return this._http.get<IPartido>(url);
+      })
+    );
+  }
+
+  getPartidoStats(idPartido: number): Observable<IPartidoStats> {
+    const url = `${this.apiUrl}/Partido/PartidoStats/${idPartido}`;
+    return this._http.get<IPartidoStats>(url);
+  }
 
   getJugadores(idEquipo: number): Observable<IJugadores> {
     const url = `${this.apiUrl}/Equipo/Jugadores/${idEquipo}`;

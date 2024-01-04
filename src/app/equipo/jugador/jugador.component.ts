@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {IJugadores, Result, IJugadoresStats, ResultStats} from '../../models/jugador.model';
-import {Errores} from '../../models/error.model';
-import {MiAPiServiceService} from '../../services/mi-api.service';
+import { Component, OnInit, TemplateRef, ChangeDetectorRef } from '@angular/core';
+import { IJugadores, Result, IJugadoresStats, ResultStats } from '../../models/jugador.model';
+import { Errores } from '../../models/error.model';
+import { MiAPiServiceService } from '../../services/mi-api.service';
 import { ActivatedRoute } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-jugador',
   templateUrl: './jugador.component.html',
@@ -10,7 +12,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JugadorComponent {
 
-  constructor(private miApiService: MiAPiServiceService, private route: ActivatedRoute) {}
+  constructor(private miApiService: MiAPiServiceService,
+     private route: ActivatedRoute,
+     private modalService: NgbModal,
+     private cdr: ChangeDetectorRef) { }
 
   jugadores: Result[] = [];
   jugadorStats: ResultStats = {} as ResultStats;
@@ -32,8 +37,6 @@ export class JugadorComponent {
           console.error(this.error);
         }
         this.jugadores = data.result;
-        console.log(this.jugadores);
-
       },
       error: (error) => {
         console.error('Error al obtener el equipo', error);
@@ -41,24 +44,53 @@ export class JugadorComponent {
     });
   }
 
-  obtenerStatsJugadores(idJugador: number){
-    this.miApiService.getJugadorStats(this.idEquipo()).subscribe({
+  obtenerStatsJugadores(idJugador: number) {
+    this.miApiService.getJugadorStats(idJugador).subscribe({
       next: (data: IJugadoresStats) => {
         if (data.isSuccess == false) {
           this.error.errorMessages = data.errorMessages;
           this.error.statusCode = data.statusCode;
           console.error(this.error);
-        }
-        this.jugadorStats = data.result;
-        console.log(this.jugadores);
+        } else {
+          this.jugadorStats = data.result;
+          console.log(this.jugadorStats);
 
+        }
       },
       error: (error) => {
         console.error('Error al obtener el equipo', error);
       }
     });
   }
-  idEquipo(): number{
+  closeResult = '';
+
+  open(content: TemplateRef<any>, idJugador: any) {
+    this.obtenerStatsJugadores(idJugador);
+
+    console.log(this.jugadorStats);
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    switch (reason) {
+      case ModalDismissReasons.ESC:
+        return 'by pressing ESC';
+      case ModalDismissReasons.BACKDROP_CLICK:
+        return 'by clicking on a backdrop';
+      default:
+        return `with: ${reason}`;
+    }
+  }
+
+  idEquipo(): number {
     // Obtén el id del equipo desde los parámetros de la ruta
     const idEquipoParam = this.route.snapshot.paramMap.get('id');
     const idEquipo = idEquipoParam ? +idEquipoParam : 0;

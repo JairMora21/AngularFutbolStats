@@ -1,38 +1,45 @@
-<div class="row p-2 hover-result" (click)="open(content)"*ngFor="let index of [1, 2, 3]">
-  <div class="col-1 d-flex align-items-center">
-    <div class="result-badge win">V</div>
-  </div>
-  <div class="col-2">
-    <div class="d-flex align-items-center justify-content-end team-name p-1">
-      AMSTERDAM
+<div *ngFor="let partido of partidos">
+  <div class="row p-2 hover-result" (click)="open(content, partido.id)">
+    <div class="col-1 d-flex align-items-center">
+      <div class="result-badge win">V</div>
     </div>
-  </div>
-  <div class="col-2 d-flex justify-content-end">
-    <img src="assets/real.png" alt="escudo" class="icono-equipo" />
-  </div>
-  <div class="col-2 align-content-center d-flex justify-content-center">
-    <div class="goles">3</div>
-    <div class="linea-resultado">-</div>
-    <div class="goles">1</div>
-  </div>
-  <div class="col-2">
-    <img
-      src="https://static.vecteezy.com/system/resources/previews/023/579/944/original/illustration-of-soccer-logo-it-s-for-success-concept-png.png"
-      alt="escudo"
-      class="icono-equipo"
-    />
-  </div>
-  <div class="col-2">
-    <div class="d-flex align-items-center team-name p-1">REAL MADRID</div>
-  </div>
-  <div class="col-1 d-flex justify-content-end align-items-center">
-    <i class="fa-solid fa-arrow-right"></i>
+    <div class="col-2">
+      <div class="d-flex align-items-center justify-content-end team-name p-1">
+        {{ partido.equipo }}
+      </div>
+    </div>
+    <div class="col-2 d-flex justify-content-end">
+      <img src="assets/real.png" alt="escudo" class="icono-equipo" />
+    </div>
+
+    <div class="col-2 align-content-center d-flex justify-content-center">
+      <div class="goles">{{ partido.golesFavor }}</div>
+      <div class="linea-resultado">-</div>
+      <div class="goles">{{ partido.golesContra }}</div>
+    </div>
+    <div class="col-2">
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/023/579/944/original/illustration-of-soccer-logo-it-s-for-success-concept-png.png"
+        alt="escudo"
+        class="icono-equipo"
+      />
+    </div>
+    <div class="col-2">
+      <div class="d-flex align-items-center team-name p-1">
+        {{ partido.nombreRival }}
+      </div>
+    </div>
+    <div class="col-1 d-flex justify-content-end align-items-center">
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
   </div>
 </div>
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title title-modal tie" id="modal-basic-title">Partido</h4>
+    <h4 class="modal-title title-modal tie" id="modal-basic-title">
+      Datos del partido
+    </h4>
     <button
       type="button"
       class="btn-close"
@@ -41,59 +48,106 @@
     ></button>
   </div>
   <div class="modal-body">
-    <div class="row p-2 hover-result">
+    <div class="row p-2">
+      <div class="col-6 d-flex align-items-center mb-3">
+        <span class="data-match type-match">{{
+          partidoStats.datosPartido.tipoPartido
+        }}</span>
+      </div>
+      <!-- resultado.component.html -->
+      <div class="col-6 d-flex align-items-center justify-content-end mb-3">
+        <span
+          class="data-match"
+          [ngClass]="{
+            win: partidoStats.datosPartido.resultado === 'Victoria',
+            defeat: partidoStats.datosPartido.resultado === 'Derrota',
+            tie: partidoStats.datosPartido.resultado === 'Empate'
+          }"
+        >
+          {{ partidoStats.datosPartido.resultado }}
+        </span>
+      </div>
+
       <div class="col-3">
         <div
           class="d-flex align-items-center justify-content-end team-name p-1"
         >
-          AMSTERDAM
+          {{ partidoStats.datosPartido.equipo }}
         </div>
       </div>
       <div class="col-2 d-flex justify-content-end">
-        <img src="assets/real.png" alt="escudo" class="icono-equipo" />
+        <img src="assets/real.png" alt="escudo" class="icono-equipo-modal" />
       </div>
-      <div class="col-2 align-content-center d-flex justify-content-center">
-        <div class="goles">3</div>
-        <div class="linea-resultado">-</div>
-        <div class="goles">1</div>
+      <div class="col-2 align-content-center justify-content-center">
+        <div>
+          <div class="d-flex align-content-center justify-content-center">
+            <div class="goles">{{ partidoStats.datosPartido.golesFavor }}</div>
+            <div class="linea-resultado">-</div>
+            <div class="goles">{{ partidoStats.datosPartido.golesContra }}</div>
+          </div>
+          <div
+            class="d-flex align-content-center justify-content-center date-match"
+          >
+            {{ fechaFormat }}
+          </div>
+        </div>
       </div>
       <div class="col-2">
         <img
           src="https://static.vecteezy.com/system/resources/previews/023/579/944/original/illustration-of-soccer-logo-it-s-for-success-concept-png.png"
           alt="escudo"
-          class="icono-equipo"
+          class="icono-equipo-modal"
         />
       </div>
       <div class="col-3">
-        <div class="d-flex align-items-center team-name p-1">REAL MADRID</div>
+        <div class="d-flex align-items-center team-name p-1">
+          {{ partidoStats.datosPartido.nombreRival }}
+        </div>
       </div>
     </div>
     <hr />
     <div class="mb-3">
       <h4 class="game-events">Goles</h4>
-      <div class="d-flex mx-1" *ngFor="let index of [1, 2, 3]">
+      <div
+        class="d-flex mx-1"
+        *ngFor="let goleadores of partidoStats.goleadores"
+      >
         <div class="mx-1"><i class="fa-solid fa-futbol"></i></div>
-        <div class="mx-1">(15)</div>
-        <div class="">Jair Mora</div>
+        <div class="mx-1">{{ goleadores.nombre }}</div>
+        <div class="">x{{ goleadores.cantidad }}</div>
       </div>
     </div>
 
     <div class="mb-3">
-      <h4 class="game-events">Tarjetas</h4>
-      <div class="d-flex mx-1" *ngFor="let index of [1, 2, 3]">
+      <h4 class="game-events">Amonestados</h4>
+      <div
+        class="d-flex mx-1"
+        *ngFor="let amonestados of partidoStats.tarjetas"
+      >
         <div class="mx-1">
-          <i class="fa-duotone fa-sd-card text-warning"></i>
+          <ng-container *ngIf="amonestados.idTipoTarjeta === 1; else yellowCard">
+            <div class="mx-1">
+              <i class="fa-duotone fa-sd-card text-danger "></i>
+            </div>
+          </ng-container>
+          <ng-template #yellowCard>
+            <div class="mx-1">
+              <i class="fa-duotone fa-sd-card text-warning "></i>
+            </div>
+          </ng-template>
         </div>
-        <div class="mx-1">(15)</div>
-        <div class="">Jair Mora</div>
+        <div class="">{{ amonestados.nombre }}</div>
       </div>
     </div>
     <div class="">
-      <h4 class="game-events">Alineaciones</h4>
-      <div class="d-flex mx-1" *ngFor="let index of [1, 2, 3]">
+      <h4 class="game-events">Participantes</h4>
+      <div
+        class="d-flex mx-1"
+        *ngFor="let participantes of partidoStats.participantes"
+      >
         <div class="mx-1"><i class="fa-solid fa-circle-user mt-1"></i></div>
         <div class="mx-1">(15)</div>
-        <div class="">Jair Mora</div>
+        <div class="">{{ participantes.nombre }}</div>
       </div>
     </div>
   </div>
