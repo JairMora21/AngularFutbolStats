@@ -5,9 +5,6 @@ import { Errores } from '../../models/error.model';
 import { MiAPiServiceService } from '../../services/mi-api.service';
 import { ActivatedRoute } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-resultado',
   templateUrl: './resultado.component.html',
@@ -76,7 +73,6 @@ export class ResultadoComponent {
   closeResult = '';
   open(content: TemplateRef<any>, idPartido: number) {
     this.obtenerPartidoStats(idPartido);
-    console.log(this.partidoStats);
 
     this.modalService.open(content, { size: 'lg', ariaLabelledBy: 'modal-basic-title' }).result.then(
       (result) => {
@@ -86,6 +82,8 @@ export class ResultadoComponent {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       },
     );
+    console.log(this.partidoStats.datosPartido);
+
   }
 
   private getDismissReason(reason: any): string {

@@ -42,24 +42,32 @@ export class MiAPiServiceService {
     return this._http.get<IPartidoStats>(url);
   }
 
+  getJugadorStats(idJugador: number): Observable<IJugadoresStats> {
+    const url = `${this.apiUrl}/Equipo/JugadorStats/${idJugador}`;
+    return this._http.get<IJugadoresStats>(url);
+}
+
+  //   getJugadorStats(idJugador: number): Observable<IJugadoresStats> {
+  //   return this.data.temporadaId$.pipe(
+  //     switchMap((idTemporada) => {
+  //       let params = new HttpParams();
+
+  //       if (idTemporada !== 0) {
+  //         params = params.set('idTemporada', idTemporada.toString());
+  //       }
+  //       const url = `${this.apiUrl}/Equipo/JugadorStats/${idJugador}`;
+  //       return this._http.get<IJugadoresStats>(url, { params });
+  //     })
+  //   );
+  // }
+
+
   getJugadores(idEquipo: number): Observable<IJugadores> {
     const url = `${this.apiUrl}/Equipo/Jugadores/${idEquipo}`;
     return this._http.get<IJugadores>(url);
   }
 
-  getJugadorStats(idJugador: number): Observable<IJugadoresStats> {
-    return this.data.temporadaId$.pipe(
-      switchMap((idTemporada) => {
-        let params = new HttpParams();
 
-        if (idTemporada !== 0) {
-          params = params.set('idTemporada', idTemporada.toString());
-        }
-        const url = `${this.apiUrl}/Equipo/JugadorStats/${idJugador}`;
-        return this._http.get<IJugadoresStats>(url, { params });
-      })
-    );
-  }
 
 
   /**
