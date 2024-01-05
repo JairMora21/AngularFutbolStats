@@ -30,7 +30,6 @@
   </div>
 </div>
 
-
 <ng-template #content let-modal>
   <div class="modal-header">
     <h5 class="modal-title title-stats" id="modal-basic-title">
@@ -59,7 +58,7 @@
         <i class="fa-duotone fa-sd-card text-danger mx-1"></i>TR
       </div>
       <div class="col-3">
-        <span class="ml-1">{{ jugadorStats.golesTemp }}</span>
+        <span class="ml-1">{{ jugadorStats.partidosJugadosTotal }}</span>
       </div>
       <div class="col-3">
         <span class="ml-1">{{ jugadorStats.golesTotal }}</span>
@@ -71,31 +70,33 @@
         <span class="ml-1">{{ jugadorStats.rojasTotal }}</span>
       </div>
     </div>
-    <div class="mx-2 title-stats-player">Temporada</div>
-    <div class="d-flex row border-stats-player m-2 p-2">
-      <div class="col-3 player-detail-stats">
-        <i class="fa-solid fa-circle-check text-success mx-1"></i>PJ
-      </div>
-      <div class="col-3 player-detail-stats">
-        <i class="fa-solid fa-futbol mx-1"></i>G
-      </div>
-      <div class="col-3 player-detail-stats">
-        <i class="fa-duotone fa-sd-card text-warning mx-1"></i>TA
-      </div>
-      <div class="col-3 player-detail-stats">
-        <i class="fa-duotone fa-sd-card text-danger mx-1"></i>TR
-      </div>
-      <div class="col-3">
-        <span class="ml-1">{{ jugadorStats.partidosJugadosTemp }}</span>
-      </div>
-      <div class="col-3">
-        <span class="ml-1">{{ jugadorStats.golesTemp }}</span>
-      </div>
-      <div class="col-3">
-        <span class="ml-1">{{ jugadorStats.amarillasTemp }}</span>
-      </div>
-      <div class="col-3">
-        <span class="ml-1">{{ jugadorStats.rojasTemp }}</span>
+    <div [ngClass]="{'season-select': !existenDatos}">
+      <div class="mx-2 title-stats-player">Temporada</div>
+      <div class="d-flex row border-stats-player m-2 p-2">
+        <div class="col-3 player-detail-stats">
+          <i class="fa-solid fa-circle-check text-success mx-1"></i>PJ
+        </div>
+        <div class="col-3 player-detail-stats">
+          <i class="fa-solid fa-futbol mx-1"></i>G
+        </div>
+        <div class="col-3 player-detail-stats">
+          <i class="fa-duotone fa-sd-card text-warning mx-1"></i>TA
+        </div>
+        <div class="col-3 player-detail-stats">
+          <i class="fa-duotone fa-sd-card text-danger mx-1"></i>TR
+        </div>
+        <div class="col-3">
+          <span class="ml-1">{{ jugadorStats.partidosJugadosTemp }}</span>
+        </div>
+        <div class="col-3">
+          <span class="ml-1">{{ jugadorStats.golesTemp }}</span>
+        </div>
+        <div class="col-3">
+          <span class="ml-1">{{ jugadorStats.amarillasTemp }}</span>
+        </div>
+        <div class="col-3">
+          <span class="ml-1">{{ jugadorStats.rojasTemp }}</span>
+        </div>
       </div>
     </div>
   </div>

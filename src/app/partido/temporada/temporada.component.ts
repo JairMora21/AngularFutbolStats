@@ -50,6 +50,9 @@ export class TemporadaPartidoComponent {
           this.errores.statusCode = data.statusCode;
           console.log(this.errores);
         } else {
+          this.temporadas = data.result.sort((a, b) => {
+            return b.id - a.id;
+          });
           this.temporadas = data.result;
         }
       },

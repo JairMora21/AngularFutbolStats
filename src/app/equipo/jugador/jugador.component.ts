@@ -4,6 +4,9 @@ import { Errores } from '../../models/error.model';
 import { MiAPiServiceService } from '../../services/mi-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from '../../services/data.service';
+
+
 
 @Component({
   selector: 'app-jugador',
@@ -12,8 +15,14 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class JugadorComponent {
 
-  constructor(private miApiService: MiAPiServiceService, private route: ActivatedRoute) { }
+  constructor(private miApiService: MiAPiServiceService,
+    private route: ActivatedRoute,
+    private data: DataService
 
+  ) { }
+
+
+  existenDatos: boolean = true;
   jugadores: Result[] = [];
   jugadorStats: ResultStats = {} as ResultStats;
   error: Errores = {} as Errores;
@@ -24,6 +33,7 @@ export class JugadorComponent {
     });
   }
 
+
   obtenerJugadores() {
     // Llama a la API para obtener el equipo correspondiente al id
     this.miApiService.getJugadores(this.idEquipo()).subscribe({
@@ -33,7 +43,9 @@ export class JugadorComponent {
           this.error.statusCode = data.statusCode;
           console.error(this.error);
         }
-        this.jugadores = data.result;
+        else {
+          this.jugadores = data.result;
+        }
       },
       error: (error) => {
         console.error('Error al obtener el equipo', error);
@@ -50,7 +62,6 @@ export class JugadorComponent {
           console.error(this.error);
         } else {
           this.jugadorStats = data.result;
-          console.log(this.jugadorStats);
         }
       },
       error: (error) => {
@@ -59,11 +70,22 @@ export class JugadorComponent {
     });
   }
 
+  validarTemporada() {
+    if (this.data.getTemporadaId() == 0) {
+      this.existenDatos = false
+    } else {
+      this.existenDatos = true
+    }
+  }
+
   private modalService = inject(NgbModal);
   closeResult = '';
   open(content: TemplateRef<any>, idJugador: any) {
     this.obtenerStatsJugadores(idJugador);
-    console.log(this.jugadorStats);
+    this.validarTemporada()
+
+
+
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
       (result) => {

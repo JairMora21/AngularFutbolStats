@@ -7,10 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DataService {
 
-  constructor(private route: ActivatedRoute) {
-    // Llama a ObtenerTemporadas en el constructor para inicializar UltimaTemporada
-    //this.ObtenerTemporadas();
-  }
+  constructor(private route: ActivatedRoute) {}
   // BehaviorSubject que almacena el valor actual de la temporada con un valor inicial de 0.
   private temporadaIdSubject = new BehaviorSubject<number>(0);
 

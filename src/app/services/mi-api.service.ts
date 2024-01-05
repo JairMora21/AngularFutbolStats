@@ -11,7 +11,7 @@ import { IPartido, IPartidoStats } from '../models/partido.model';
 
 
 import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { DataService } from './data.service';
 
@@ -28,6 +28,7 @@ export class MiAPiServiceService {
   constructor(private _http: HttpClient, private data: DataService) { }
 
 
+
   getPartidos(): Observable<IPartido> {
     return this.data.temporadaId$.pipe(
       switchMap((idTemporada) => {
@@ -42,24 +43,20 @@ export class MiAPiServiceService {
     return this._http.get<IPartidoStats>(url);
   }
 
-  getJugadorStats(idJugador: number): Observable<IJugadoresStats> {
-    const url = `${this.apiUrl}/Equipo/JugadorStats/${idJugador}`;
-    return this._http.get<IJugadoresStats>(url);
-}
 
-  //   getJugadorStats(idJugador: number): Observable<IJugadoresStats> {
-  //   return this.data.temporadaId$.pipe(
-  //     switchMap((idTemporada) => {
-  //       let params = new HttpParams();
+    getJugadorStats(idJugador: number): Observable<IJugadoresStats> {
+    return this.data.temporadaId$.pipe(
+      switchMap((idTemporada) => {
+        let params = new HttpParams();
 
-  //       if (idTemporada !== 0) {
-  //         params = params.set('idTemporada', idTemporada.toString());
-  //       }
-  //       const url = `${this.apiUrl}/Equipo/JugadorStats/${idJugador}`;
-  //       return this._http.get<IJugadoresStats>(url, { params });
-  //     })
-  //   );
-  // }
+        if (idTemporada != 0) {
+          params = params.set('idTemporada', idTemporada.toString());
+        }
+        const url = `${this.apiUrl}/Equipo/JugadorStats/${idJugador}`;
+        return this._http.get<IJugadoresStats>(url, { params });
+      })
+    );
+  }
 
 
   getJugadores(idEquipo: number): Observable<IJugadores> {
@@ -84,7 +81,7 @@ getTopPartidos(idEquipo: number, limite: number | null): Observable<ITopStats> {
       // Crea un objeto 'HttpParams' para gestionar los parámetros de la URL.
       let params = new HttpParams();
       // Añade el parámetro 'idTemporada' si el valor es diferente de cero.
-      if (idTemporada !== 0) {
+      if (idTemporada != 0) {
         params = params.set('idTemporada', idTemporada.toString());
       }
       // Añade el parámetro 'limite' si el valor no es nulo.
@@ -104,7 +101,7 @@ getTopPartidos(idEquipo: number, limite: number | null): Observable<ITopStats> {
     return this.data.temporadaId$.pipe(
       switchMap((idTemporada) => {
         let params = new HttpParams();
-        if (idTemporada !== 0) {
+        if (idTemporada != 0) {
           params = params.set('idTemporada', idTemporada.toString());
         }
         if (limite !== null) {
@@ -121,7 +118,7 @@ getTopPartidos(idEquipo: number, limite: number | null): Observable<ITopStats> {
     return this.data.temporadaId$.pipe(
       switchMap((idTemporada) => {
         let params = new HttpParams();
-        if (idTemporada !== 0) {
+        if (idTemporada != 0) {
           params = params.set('idTemporada', idTemporada.toString());
         }
         if (limite !== null) {
