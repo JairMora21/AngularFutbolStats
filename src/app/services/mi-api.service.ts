@@ -5,7 +5,7 @@ import { HttpParams } from '@angular/common/http';
 import { IEquipoStats } from '../models/equipoStats.model';
 import { IEquipos, IEquipo } from '../models/equipos.model';
 import { ITopStats, ITopStatsCards } from '../models/topStats.model';
-import { ITemporada } from '../models/temporada.model';
+import { ITemporada, IUltimaTemporada } from '../models/temporada.model';
 import { IJugadores, IJugadoresStats } from '../models/jugador.model';
 import { IPartido, IPartidoStats } from '../models/partido.model';
 
@@ -31,7 +31,7 @@ export class MiAPiServiceService {
   getPartidos(): Observable<IPartido> {
     return this.data.temporadaId$.pipe(
       switchMap((idTemporada) => {
-        const url = `${this.apiUrl}/Partido/Partidos${idTemporada}`;
+        const url = `${this.apiUrl}/Partido/Partidos/${idTemporada}`;
         return this._http.get<IPartido>(url);
       })
     );
@@ -125,11 +125,6 @@ getTopPartidos(idEquipo: number, limite: number | null): Observable<ITopStats> {
     );
   }
 
-
-
-
-
-
   /**
   * Obtiene las estadísticas del equipo para un ID de equipo dado y una temporada específica.
   * @param idEquipo ID del equipo para el cual se solicitan las estadísticas.
@@ -153,6 +148,12 @@ getTopPartidos(idEquipo: number, limite: number | null): Observable<ITopStats> {
   getTemporadas(idEquipo: number): Observable<ITemporada> {
     let url = `${this.apiUrl}/Temporada/Temporadas/${idEquipo}`;
     return this._http.get<ITemporada>(url);
+  }
+
+
+  getUltimaTemporadas(idEquipo: number): Observable<IUltimaTemporada> {
+    let url = `${this.apiUrl}/Temporada/UltimaTemporada/${idEquipo}`;
+    return this._http.get<IUltimaTemporada>(url);
   }
 
   /**

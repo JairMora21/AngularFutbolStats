@@ -19,9 +19,10 @@ export class ResultadoComponent {
 
   partidos: Result[] = [];
   partidoStats: ResultStats = {} as ResultStats;
+  error: Errores = {} as Errores;
+
   fechaFormat: string = '';
 
-  error: Errores = {} as Errores;
 
 
   ngOnInit() {
@@ -38,9 +39,9 @@ export class ResultadoComponent {
           this.error.errorMessages = data.errorMessages;
           this.error.statusCode = data.statusCode;
           console.error(this.error);
-        }
+        } else {
         this.partidos = data.result;
-        console.log(this.partidos)
+        }
       },
       error: (error) => {
         console.error('Error al obtener el equipo', error);
@@ -56,24 +57,27 @@ export class ResultadoComponent {
           this.error.statusCode = data.statusCode;
           console.error(this.error);
         }
+        else {
         this.partidoStats = data.result;
         const fechaCompleta = new Date(this.partidoStats.datosPartido.fecha);
         const mes = fechaCompleta.getMonth() + 1;
         const dia = fechaCompleta.getDate() + 1;
         const fechaFormateada = `${mes}/${dia}`;
         this.fechaFormat = fechaFormateada;
-        console.log(data.result.datosPartido);
-
+        }
       },
       error: (error) => {
         console.error('Error al obtener el equipo', error);
       }
     });
   }
+
   private modalService = inject(NgbModal);
   closeResult = '';
-
   open(content: TemplateRef<any>, idPartido: number) {
+    this.obtenerPartidoStats(idPartido);
+    console.log(this.partidoStats);
+
     this.modalService.open(content, { size: 'lg', ariaLabelledBy: 'modal-basic-title' }).result.then(
       (result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -82,7 +86,6 @@ export class ResultadoComponent {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       },
     );
-    this.obtenerPartidoStats(idPartido);
   }
 
   private getDismissReason(reason: any): string {

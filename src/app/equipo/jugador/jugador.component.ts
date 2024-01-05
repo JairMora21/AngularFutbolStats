@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, inject } from '@angular/core';
 import { IJugadores, Result, IJugadoresStats, ResultStats } from '../../models/jugador.model';
 import { Errores } from '../../models/error.model';
 import { MiAPiServiceService } from '../../services/mi-api.service';
@@ -12,10 +12,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class JugadorComponent {
 
-  constructor(private miApiService: MiAPiServiceService,
-     private route: ActivatedRoute,
-     private modalService: NgbModal,
-     private cdr: ChangeDetectorRef) { }
+  constructor(private miApiService: MiAPiServiceService, private route: ActivatedRoute) { }
 
   jugadores: Result[] = [];
   jugadorStats: ResultStats = {} as ResultStats;
@@ -54,7 +51,6 @@ export class JugadorComponent {
         } else {
           this.jugadorStats = data.result;
           console.log(this.jugadorStats);
-
         }
       },
       error: (error) => {
@@ -62,11 +58,11 @@ export class JugadorComponent {
       }
     });
   }
-  closeResult = '';
 
+  private modalService = inject(NgbModal);
+  closeResult = '';
   open(content: TemplateRef<any>, idJugador: any) {
     this.obtenerStatsJugadores(idJugador);
-
     console.log(this.jugadorStats);
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(

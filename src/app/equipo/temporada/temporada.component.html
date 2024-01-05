@@ -1,6 +1,8 @@
 
 <p class="seas-title">Temporada</p>
 <select class="form-control" (change)="seleccionarTemporada($event)">
+  <option value="" disabled selected>Seleccionar</option>
+  <option value="0" >Historico</option>
   <option *ngFor="let temporada of temporadas" [value]="temporada.id">
     {{ temporada.nombreTemporada }}
   </option>

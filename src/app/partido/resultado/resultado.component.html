@@ -1,7 +1,16 @@
 <div *ngFor="let partido of partidos">
   <div class="row p-2 hover-result" (click)="open(content, partido.id)">
     <div class="col-1 d-flex align-items-center">
-      <div class="result-badge win">V</div>
+      <div
+        class="result-badge"
+        [ngClass]="{
+          win: partido.resultado === 'Victoria',
+          defeat: partido.resultado === 'Derrota',
+          tie: partido.resultado === 'Empate'
+        }"
+      >
+        {{ partido.resultado.charAt(0) }}
+      </div>
     </div>
     <div class="col-2">
       <div class="d-flex align-items-center justify-content-end team-name p-1">
@@ -9,7 +18,7 @@
       </div>
     </div>
     <div class="col-2 d-flex justify-content-end">
-      <img src="assets/real.png" alt="escudo" class="icono-equipo" />
+      <img src="{{ partido.equipoEscudo }}" alt="escudo" class="icono-equipo" />
     </div>
 
     <div class="col-2 align-content-center d-flex justify-content-center">
@@ -76,7 +85,11 @@
         </div>
       </div>
       <div class="col-2 d-flex justify-content-end">
-        <img src="assets/real.png" alt="escudo" class="icono-equipo-modal" />
+        <img
+          src="{{ partidoStats.datosPartido.equipoEscudo }}"
+          alt="escudo"
+          class="icono-equipo-modal"
+        />
       </div>
       <div class="col-2 align-content-center justify-content-center">
         <div>
@@ -125,14 +138,16 @@
         *ngFor="let amonestados of partidoStats.tarjetas"
       >
         <div class="mx-1">
-          <ng-container *ngIf="amonestados.idTipoTarjeta === 1; else yellowCard">
+          <ng-container
+            *ngIf="amonestados.idTipoTarjeta === 1; else yellowCard"
+          >
             <div class="mx-1">
-              <i class="fa-duotone fa-sd-card text-danger "></i>
+              <i class="fa-duotone fa-sd-card text-danger"></i>
             </div>
           </ng-container>
           <ng-template #yellowCard>
             <div class="mx-1">
-              <i class="fa-duotone fa-sd-card text-warning "></i>
+              <i class="fa-duotone fa-sd-card text-warning"></i>
             </div>
           </ng-template>
         </div>
@@ -146,7 +161,7 @@
         *ngFor="let participantes of partidoStats.participantes"
       >
         <div class="mx-1"><i class="fa-solid fa-circle-user mt-1"></i></div>
-        <div class="mx-1">(15)</div>
+        <div class="mx-1">({{participantes.dorsal}})</div>
         <div class="">{{ participantes.nombre }}</div>
       </div>
     </div>

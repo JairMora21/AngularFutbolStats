@@ -29,16 +29,6 @@ export class TemporadaComponent {
 
     errores: Errores= { } as Errores
 
-     historica: Result = {
-      id: 0,
-      clasificacion: null,
-      equipo: 'Histórica',
-      noTemporada: 0,
-      fechaInicio: new Date(),
-      fechaFinal: null,
-      posicion: null,
-      nombreTemporada: 'Histórica'
-    };
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -61,7 +51,6 @@ export class TemporadaComponent {
           console.log(this.errores);
         } else {
           this.temporadas = data.result;
-          this.temporadas.push(this.historica);
         }
       },
       error: (error) => {

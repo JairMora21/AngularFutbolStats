@@ -18,6 +18,7 @@ import { TopTarjetasComponent } from './equipo/top-tarjetas/top-tarjetas.compone
 import { JugadorComponent } from './equipo/jugador/jugador.component';
 import { ResultadoComponent } from './partido/resultado/resultado.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TemporadaPartidoComponent } from './partido/temporada/temporada.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EquipoComponent,
     PartidoComponent,
     TemporadaComponent,
+    TemporadaPartidoComponent,
     InfoEquipoComponent,
     StatsComponent,
     TopGolesComponent,

@@ -17,7 +17,7 @@
           </ul>
         </li>
         <li class="nav-item" *ngIf="equipoSeleccionado !== 0">
-          <a class="text-nav" aria-current="page" [routerLink]="['/partidos', equipoSeleccionado]">Partidos</a>
+          <a class="text-nav" aria-current="page" [routerLink]="['/partidos', equipoSeleccionado]" (click)="ObtenerUltimaTemporada(equipoSeleccionado)">Partidos</a>
         </li>
       </ul>
     </div>
