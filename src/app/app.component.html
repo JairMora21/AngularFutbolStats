@@ -1,27 +1,66 @@
+<style>
+  .background-image {
+    background-image: url("/src//assets/Black\ Modern\ Soccer\ Logo.png");
+    background-size: cover;
+    background: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 30vh; /* Ajusta según sea necesario para cubrir la altura completa de la pantalla */
+    position: relative;
+  }
 
-<nav class="navbar navbar-expand-lg  navbar-radius ">
+  /* Agrega estilos adicionales según sea necesario para el contenido de la barra de navegación y otros elementos en la página. */
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-radius">
   <div class="container-fluid px-3">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse m-1" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item  dropdown">
-          <a class=" dropdown-toggle active text-nav" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a
+            class="dropdown-toggle active text-nav"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Equipos
           </a>
           <ul class="dropdown-menu">
             <li *ngFor="let equipo of resultadosEquipos">
-              <a class="dropdown-item" [routerLink]="['/equipo', equipo.id]" (click)="EquipoSelect(equipo.id)">{{ equipo.nombre }}</a>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/equipo', equipo.id]"
+                (click)="EquipoSelect(equipo.id)"
+                >{{ equipo.nombre }}</a
+              >
             </li>
           </ul>
         </li>
         <li class="nav-item" *ngIf="equipoSeleccionado !== 0">
-          <a class="text-nav" aria-current="page" [routerLink]="['/partidos', equipoSeleccionado]" (click)="ObtenerUltimaTemporada(equipoSeleccionado)">Partidos</a>
+          <a
+            class="text-nav"
+            aria-current="page"
+            [routerLink]="['/partidos', equipoSeleccionado]"
+            (click)="ObtenerUltimaTemporada(equipoSeleccionado)"
+            >Partidos</a
+          >
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
-<router-outlet></router-outlet>
+<div class="background-image">
+  <router-outlet></router-outlet>
+</div>

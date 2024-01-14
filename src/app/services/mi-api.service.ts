@@ -23,11 +23,10 @@ import { DataService } from './data.service';
 })
 export class MiAPiServiceService {
 
-  private apiUrl = 'http://localhost:9097/api'
+//private apiUrl = 'http://localhost:9097/api'
+  private apiUrl = 'https://apifutbolstats.azurewebsites.net/api'
 
   constructor(private _http: HttpClient, private data: DataService) { }
-
-
 
   getPartidos(): Observable<IPartido> {
     return this.data.temporadaId$.pipe(
