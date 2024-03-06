@@ -11,9 +11,11 @@ import { IPartido, IPartidoStats } from '../models/partido.model';
 
 
 import { switchMap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, config, of } from 'rxjs';
+import { environment } from 'src/enviroment';
 
 import { DataService } from './data.service';
+
 
 
 
@@ -21,10 +23,12 @@ import { DataService } from './data.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class MiAPiServiceService {
 
-//private apiUrl = 'http://localhost:9097/api'
-  private apiUrl = 'https://apifutbolstats.azurewebsites.net/api'
+  //private apiUrl = 'http://localhost:8095/api'
+
+  private apiUrl = environment.apiUrl;
 
   constructor(private _http: HttpClient, private data: DataService) { }
 
