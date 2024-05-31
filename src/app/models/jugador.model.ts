@@ -25,6 +25,7 @@ export interface IJugadoresStats {
 }
 
 export interface ResultStats {
+  id: number;
   golesTemp: number;
   golesTotal: number;
   amarillasTemp: number;
